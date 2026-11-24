@@ -18,9 +18,11 @@ The source release includes paired routine CT and 105 μm Micro-PCCT for 30 spec
 - [Public dataset on Zenodo](https://doi.org/10.5281/zenodo.19404387)
 - [Published LumbarSR baselines](https://github.com/FrankZhangRp/LumbarSR-Challenge)
 
-## Task 3 scoring preview
+## Evaluation protocol and scoring code
 
-Run the dependency-free scalar BV/TV evaluator on the bundled synthetic data. See the [evaluation guide](evaluation/README.md) for input checks, scoring and regression tests. The official ranking and reference workflow will be specified with the challenge design.
+Tracks 1 and 2 report PSNR, 3D SSIM, MAE, RMSE and signed intensity error on a fixed three-dimensional region. The development protocol also describes the candidate trabecular endpoints, the controls used to qualify them and the ranking rules. Track 3 scores per-specimen BV/TV in percentage points. The [evaluation guide](evaluation/README.md) documents formats, definitions, provenance and how to run the scorers and tests.
+
+Try the Task 3 evaluator with the two synthetic examples.
 
 ```sh
 python3 evaluation/score_bvtv.py --reference evaluation/examples/reference.csv --predictions evaluation/examples/predictions.csv

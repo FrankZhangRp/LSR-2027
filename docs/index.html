@@ -135,7 +135,7 @@
       <section id="evaluation" class="shell section" aria-labelledby="eval-title">
         <div class="section-heading">
           <h2 id="eval-title">Evaluation by track</h2>
-          <p>Track 1 proposes local bone volume and spatial agreement measures to detect reconstructions that preserve total bone volume while misplacing trabeculae.</p>
+          <p>Tracks 1 and 2 report PSNR, 3D SSIM, MAE, RMSE and signed intensity error in a fixed 3D region. These measurements cover image fidelity and systematic intensity error.</p>
         </div>
         <div class="endpoints">
           <article>
@@ -151,9 +151,9 @@
         </div>
         <div class="clinical-note">
           <h3>PCCT and biomarker scoring</h3>
-          <p>Track 2 compares reconstructions with the finer clinical-grade PCCT reference of the same specimen. Track 3 scores mean absolute BV/TV error in percentage points against qualified Micro-PCCT measurements. Direct estimation and super-resolution-assisted methods use the same per-vertebra reference.</p>
+          <p>Track 1 qualifies local BV/TV error and trabecular spatial agreement against Micro-PCCT. Track 2 compares reconstructions with finer clinical-grade PCCT and qualifies a structural endpoint at the scale the reference can resolve. Track 3 ranks per-vertebra BV/TV estimates by mean absolute error in percentage points and reports signed bias.</p>
         </div>
-        <a class="text-link" href="https://github.com/FrankZhangRp/LSR-2027/tree/main/evaluation">Try the Task 3 scoring preview <span aria-hidden="true">↗</span></a>
+        <a class="text-link" href="https://github.com/FrankZhangRp/LSR-2027/tree/main/evaluation">Read the evaluation protocol and run the scoring code <span aria-hidden="true">↗</span></a>
       </section>
 
       <section id="resources" class="band" aria-labelledby="resources-title">
