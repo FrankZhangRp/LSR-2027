@@ -4,13 +4,15 @@
 
 ## Tasks and outputs
 
-| Track | Submitted output and organizer reference | Pilot ranking and reporting | Formal primary endpoint under development |
+| Track | Submitted output and organizer reference | Pilot comparison and reporting | Formal primary endpoint under development |
 | --- | --- | --- | --- |
 | T1 · Standard CT to Micro-PCCT | Reconstruct each required CT protocol on the paired 105 µm Micro-PCCT grid of the same ex vivo vertebra. | PSNR descending. Report PSNR, 3D SSIM, MAE, RMSE and signed bias. | Local three-dimensional BV/TV MAE and spatial bone F1 with a physical tolerance. Use a combined rank if both qualify. |
 | T2 · Clinical-grade PCCT upsampling | Reconstruct the finer sampling grid from a coarser reconstruction of the same ex vivo vertebra, preferably from the same acquisition. | PSNR descending. Report the same image metrics as T1 with a T2-specific reference and manifest. | Apparent 3D trabecular separation (Tb.Sp) error in mm, conditional on repeatability, paired registration, and effective resolution. |
 | T3 · Quantitative bone biomarker | Predict one BV/TV percentage per vertebra from standard CT. The reference is the organizer's Micro-PCCT-derived measurement in a predefined cancellous volume of interest (VOI). | BV/TV MAE ascending. Report signed bias and specimen count. | The same scalar ranking rule after reference qualification. |
 
 T1 uses paired cross-scanner images. T2 uses the clinically available scanner to compare reconstructions at two sampling scales. T3 quantifies agreement for a scalar bone biomarker relevant to osteoporosis research. The experimental unit is an ex vivo vertebra. The source LumbarSR study describes the public paired CT and Micro-PCCT dataset and the existing baselines. [Scientific Data article](https://doi.org/10.1038/s41597-026-07748-5) · [Public dataset](https://doi.org/10.5281/zenodo.19404387)
+
+PSNR is the comparison metric for the T1/T2 image-fidelity preview. The shared organizer sandbox reports scores for each SR task and retains BV/TV MAE as its global display sort. The pilot uses one sample submission per phase, so comparative SR ranking was not exercised there.
 
 ## Image fidelity for T1 and T2
 
