@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="LumbarSR 2027 is a proposed MICCAI challenge for lumbar CT super-resolution, trabecular structure preservation, and clinical photon-counting CT transfer.">
+  <meta name="theme-color" content="#09131c">
+  <link rel="canonical" href="https://frankzhangrp.github.io/LumbarSR-2027/">
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="preload" href="./assets/clinical-axial.png" as="image">
+  <link rel="preload" href="./assets/micro-axial.png" as="image">
+  <script src="./compare.js" defer></script>
+  <title>LumbarSR 2027 | Trabecular Structure in Lumbar CT</title>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="dark">
+    <div class="shell masthead">
+      <a class="brand" href="./" aria-label="LumbarSR 2027 home">
+        <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span>LumbarSR <span class="brand-year">2027</span></span>
+      </a>
+      <nav aria-label="Main navigation">
+        <a href="#tracks">Tracks</a>
+        <a href="#dataset">Data</a>
+        <a href="#evaluation">Evaluation</a>
+        <a href="#team">Team</a>
+      </nav>
+      <a class="repo-link" href="https://github.com/FrankZhangRp/LumbarSR-2027">GitHub <span aria-hidden="true">↗</span></a>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="dark">
+      <section class="shell hero" aria-labelledby="hero-title">
+        <div class="hero-intro">
+          <p class="status"><span aria-hidden="true"></span> MICCAI 2027 Challenge proposal</p>
+          <h1 id="hero-title">Lumbar<span>SR</span></h1>
+          <p class="hero-subtitle">Preserving trabecular structure in lumbar CT.</p>
+          <p class="hero-copy">A benchmark for vertebral CT super-resolution and few-shot transfer to clinical photon-counting CT, motivated by osteoporosis research.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#tracks">Explore tracks <span aria-hidden="true">↓</span></a>
+            <a class="button secondary" href="https://doi.org/10.1038/s41597-026-07748-5">Read the paper <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+
+        <figure class="viewer" aria-labelledby="viewer-title">
+          <div class="viewer-bar">
+            <h2 id="viewer-title">Paired specimen viewer</h2>
+            <div class="plane-control" role="group" aria-label="Image plane" hidden>
+              <button type="button" data-plane="axial" aria-pressed="true">Axial</button>
+              <button type="button" data-plane="coronal" aria-pressed="false">Coronal</button>
+              <button type="button" data-plane="sagittal" aria-pressed="false">Sagittal</button>
+            </div>
+            <p id="viewer-status" class="sr-only" aria-live="polite"></p>
+          </div>
+          <div class="scan-pair">
+            <div class="scan">
+              <div class="scan-image">
+                <img id="clinical-view" src="./assets/clinical-axial.png" width="741" height="834" alt="Axial clinical CT of a public ex vivo lumbar vertebra, with relatively coarse trabecular detail">
+              </div>
+              <div class="scan-label"><strong>Clinical CT</strong><span>586 μm in-plane</span></div>
+            </div>
+            <div class="scan reference">
+              <div class="scan-image">
+                <img id="micro-view" src="./assets/micro-axial.png" width="741" height="839" alt="Axial Micro-PCCT of the same public ex vivo lumbar vertebra, showing finer trabecular detail">
+              </div>
+              <div class="scan-label"><strong>Micro-PCCT</strong><span>105 μm isotropic</span></div>
+            </div>
+          </div>
+          <figcaption>Public ex vivo images of the same specimen. <a href="https://frankzhangrp.github.io/LumbarSR-Challenge/compare.html">Original LumbarSR viewer <span aria-hidden="true">↗</span></a></figcaption>
+        </figure>
+      </section>
+      <dl class="shell evidence" aria-label="Published dataset at a glance">
+        <div><dt>Public paired specimens</dt><dd>30</dd></div>
+        <div><dt>Clinical CT configurations</dt><dd>8</dd></div>
+        <div><dt>Micro-PCCT reference voxels</dt><dd>105 <small>μm</small></dd></div>
+        <div><dt>Data descriptor</dt><dd><a href="https://doi.org/10.1038/s41597-026-07748-5">Scientific Data <span aria-hidden="true">↗</span></a></dd></div>
+      </dl>
+    </div>
+
+      <section id="tracks" class="shell section" aria-labelledby="tracks-title">
+        <div class="section-heading">
+          <h2 id="tracks-title">Challenge tracks</h2>
+          <p>Two ex vivo tasks share a Micro-PCCT reference. A third asks how well models adapt to in vivo imaging.</p>
+        </div>
+        <ol class="tracks">
+          <li>
+            <p class="track-index" aria-label="Track 1">01</p>
+            <h3>Fixed-protocol super-resolution</h3>
+            <p>Reconstruct trabecular structure from one routine clinical CT volume, with the same specimen’s Micro-PCCT as reference.</p>
+            <p class="track-flow">Clinical CT <span aria-hidden="true">→</span> Micro-PCCT grid</p>
+          </li>
+          <li>
+            <p class="track-index" aria-label="Track 2">02</p>
+            <h3>Cross-protocol generalization</h3>
+            <p>Test a single model on held-out combinations of field of view, slice thickness and reconstruction kernel.</p>
+            <p class="track-flow">Held-out CT protocols <span aria-hidden="true">→</span> Micro-PCCT grid</p>
+          </li>
+          <li>
+            <p class="track-index" aria-label="Track 3">03</p>
+            <h3>Clinical PCCT transfer</h3>
+            <p>Adapt an ex vivo model with a small shared clinical set. Evaluate on independent patients with qualified PCCT reference pairs.</p>
+            <p class="track-flow">Clinical PCCT <span aria-hidden="true">→</span> Higher-sampling PCCT grid</p>
+          </li>
+        </ol>
+        <p class="section-note">The clinical ranking depends on verified pairs, measurement repeatability and approved data access.</p>
+      </section>
+
+      <section id="dataset" class="band" aria-labelledby="data-title">
+        <div class="shell section">
+          <div class="section-heading">
+            <h2 id="data-title">Data &amp; test phases</h2>
+            <p>The public release provides original DICOM and registered NIfTI. Clinical CT acquisitions are rigidly aligned with ANTs to the 105 μm Micro-PCCT grid.</p>
+          </div>
+          <dl class="splits" aria-label="Proposed ex vivo split by specimen">
+            <div class="public-split"><dt>Public development</dt><dd>30</dd><dd class="split-description">Published scans and references for training and local validation.</dd></div>
+            <div><dt>Private phase A</dt><dd>10</dd><dd class="split-description">Development feedback from a hidden set.</dd></div>
+            <div><dt>Private phase B</dt><dd>10</dd><dd class="split-description">Final blind scoring on a separate set.</dd></div>
+          </dl>
+          <p class="section-note">Counts are vertebral specimens. The in vivo PCCT cohort is separate.</p>
+          <details class="protocols">
+            <summary>Published acquisition matrix <span aria-hidden="true">+</span></summary>
+            <div class="protocol-grid">
+              <div><strong>In-plane sampling</strong><p>195 or 586 μm</p></div>
+              <div><strong>Slice thickness</strong><p>500 or 1,000 μm</p></div>
+              <div><strong>Reconstruction kernel</strong><p>Bone or soft tissue</p></div>
+            </div>
+            <p>All eight combinations were acquired for the published dataset. See Table 2 in the <a href="https://doi.org/10.1038/s41597-026-07748-5">Scientific Data paper</a>.</p>
+          </details>
+          <a class="text-link" href="https://doi.org/10.5281/zenodo.19404387">Download the public data on Zenodo <span aria-hidden="true">↗</span></a>
+        </div>
+      </section>
+
+      <section id="evaluation" class="shell section" aria-labelledby="eval-title">
+        <div class="section-heading">
+          <h2 id="eval-title">How we score structure</h2>
+          <p>A reconstruction can preserve total bone volume while misplacing individual trabeculae. The proposed ex vivo endpoints capture both sources of error.</p>
+        </div>
+        <div class="endpoints">
+          <article>
+            <p class="metric-label">Local BV/TV error</p>
+            <h3>How much bone is preserved?</h3>
+            <p>Measure bone volume fraction in fixed cancellous subregions and report the absolute error against the paired reference.</p>
+          </article>
+          <article>
+            <p class="metric-label">Trabecular spatial F1</p>
+            <h3>Is the bone in the right place?</h3>
+            <p>Use a fixed registration tolerance and report both missed reference bone and predicted bone without local reference support.</p>
+          </article>
+        </div>
+        <div class="clinical-note">
+          <h3>Clinical endpoints</h3>
+          <p>The proposed clinical assessment uses apparent trabecular spacing, cancellous HU agreement and blinded review of visible structure against a qualified PCCT reference. These are technical endpoints for osteoporosis research.</p>
+        </div>
+      </section>
+
+      <section id="resources" class="band" aria-labelledby="resources-title">
+        <div class="shell section">
+          <div class="section-heading">
+            <h2 id="resources-title">Published resources</h2>
+            <p>The Scientific Data descriptor reports image quality and bone morphometry separately. The public benchmark includes interpolation, SRCNN, U-Net, ESRGAN and SwinIR.</p>
+          </div>
+          <div class="resources">
+            <a href="https://doi.org/10.1038/s41597-026-07748-5"><strong>Data descriptor</strong><span>Wang et al. · Scientific Data 13, 1506 (2026)</span><span class="arrow" aria-hidden="true">↗</span></a>
+            <a href="https://doi.org/10.5281/zenodo.19404387"><strong>Public dataset</strong><span>Zenodo · 10.5281/zenodo.19404387</span><span class="arrow" aria-hidden="true">↗</span></a>
+            <a href="https://github.com/FrankZhangRp/LumbarSR-Challenge"><strong>Baselines &amp; evaluation code</strong><span>Registration, reconstruction and morphometry</span><span class="arrow" aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+      </section>
+
+      <section id="team" class="shell section" aria-labelledby="team-title">
+        <div class="section-heading"><h2 id="team-title">Challenge team</h2></div>
+        <ol class="team-list" role="list">
+          <li><strong>Ping Wang</strong></li>
+          <li><strong>Ruipeng Zhang</strong></li>
+          <li><strong>Mengfei Wang</strong></li>
+          <li><strong>Yao Zeng</strong></li>
+          <li><strong>Zhuo Li</strong></li>
+          <li><strong>Yunyi Li</strong></li>
+          <li><strong>Dan Wang</strong><span>Corresponding</span></li>
+          <li><strong>Xiaoer Wei</strong><span>Corresponding</span></li>
+          <li><strong>Yueqi Zhu</strong><span>Corresponding</span></li>
+          <li><strong>Yuehua Li</strong><span>Last author</span></li>
+        </ol>
+      </section>
+  </main>
+
+    <footer class="dark">
+      <div class="shell footer">
+        <p><strong>LumbarSR 2027</strong><span>MICCAI Challenge proposal</span></p>
+        <a href="https://github.com/FrankZhangRp/LumbarSR-2027">Site repository <span aria-hidden="true">↗</span></a>
+      </div>
+    </footer>
+</body>
+</html>
